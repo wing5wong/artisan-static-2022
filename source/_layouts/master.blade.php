@@ -1,9 +1,18 @@
 <!DOCTYPE html>
-<html lang="{{ $page->language ?? 'en' }}">
+<html lang="en">
 <head>
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-45972373-5"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'UA-45972373-5');
+</script>
     <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <meta http-equiv="x-ua-compatible" content="ie=edge">
     <title>
         @yield('title')
         {{ !empty($__env->yieldContent('title')) ? ' | ' : '' }}
@@ -12,42 +21,32 @@
 
     @include('_partials.head.favicon')
     @include('_partials.head.meta')
-    @include('_partials.cms.identity_widget')
 
     <link rel="stylesheet" href="{{ mix('css/main.css', 'assets/build') }}">
 </head>
 <body>
-    <section>
-        <header>
-            <nav>
-                <strong>{{ $page->site->title }}</strong><br>
-                <ul>
-                    <li><a href="/">Home</a></li>
-                    <li><a href="/posts">Posts</a></li>
-                    <li><a href="/about">About</a></li>
-                    <li><a href="/contact">Contact</a></li>
-                </ul>
-            </nav>
-        </header>
+    <header>
+        <nav>
+            <strong>{{ $page->site->title }}</strong><br>
+            <ul>
+                <li><a href="/">Home</a></li>
+                <li><a href="/posts">Posts</a></li>
+                <li><a href="/about">About</a></li>
+                <li><a href="/contact">Contact</a></li>
+            </ul>
+        </nav>
+    </header>
 
-        <article>
-            <section>
-                @yield('content')
-            </section>
-        </article>
+    <article>
+        <section>
+            @yield('content')
+        </section>
+    </article>
 
-        <footer>
-            <small>
-                &copy; <span data-year></span> {{ $page->owner->name }} &nbsp;&bull;&nbsp;
-                <a href="/feed.atom">RSS</a> &nbsp;&bull;&nbsp;
-                Maintained by Ranie Santos &nbsp;&bull;&nbsp;
-                <a href="https://github.com/raniesantos/artisan-static">GitHub repo</a>
-            </small>
-        </footer>
-    </section>
+    <footer>
+    </footer>
 
     <script src="{{ mix('js/main.js', 'assets/build') }}"></script>
-    @includeWhen($page->production && $page->services->analytics, '_partials.analytics')
-    @include('_partials.cms.identity_redirect')
+    @includeWhen($page->production, '_partials.analytics')
 </body>
 </html>

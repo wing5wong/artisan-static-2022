@@ -9,7 +9,7 @@
         @forelse ($posts->sortBy('title') as $post)
             <li>
                 <a href="{{ $post->getPath() }}">{{ $post->title }}</a>
-                <small>{{ $post->prettyDate() }}</small>
+                <small>{{ date('M j, Y', $post->date) }}</small>
             </li>
         @empty
             <p>No posts to show.</p>

@@ -1,6 +1,8 @@
 /build_local/
 /build_staging/
 /build_production/
+/build_build/
+/build_dev/
 /cache/
 /node_modules/
 /source/assets/build/

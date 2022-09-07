@@ -28,3 +28,12 @@ function str_limit_soft($value, $limit = 100, $end = '...')
 
     return rtrim(strtok(wordwrap($value, $limit, "\n"), "\n"), ' .') . $end;
 }
+
+
+
+function posts_filter($posts, $tag)
+{
+    return $posts->filter(function ($post) use ($tag) {
+        return collect($post->tags)->contains($tag->name());
+    });
+}

@@ -1,5 +1,6 @@
 <div id="disqus_thread"></div>
 <script>
+/* eslint-disable */
 var disqus_config = function () {
     this.page.url = '{{ $page->getUrl() }}';
     this.page.identifier = '{{ $page->getFilename() }}';
